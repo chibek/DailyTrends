@@ -1,1 +1,27 @@
-<p>feeds works!</p>
+<section class="feed" *ngIf="Feed.length > 0">
+  <!-- Bloque -->
+  <div class="row"  *ngFor="let feedInfo of Feed; let numFeed = index">
+        <div class="col-4"></div>
+        <div class="col-4">
+        <!-- Card -->
+        <div class="card justify-content-center mt-2 mb-2" style="width: 450px;">
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+            <h3 class="float-left">{{ feedInfo?.title }}</h3>
+            <span class="float-right">{{numFeed+1}}/{{Feed.length}}</span>
+            </li>
+            <li class="list-group-item">
+            <img  src="assets/img/{{ feedInfo.image }}"  (error)="setDefaultPic(feedInfo)"  class="img-fluid mb-1">
+
+            <strong>{{ feedInfo?.publisher }}</strong>
+            <p>{{ feedInfo?.body }}</p>
+            </li>
+            <li class="list-group-item">
+            <a>{{ feedInfo?.source  }}</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</section>
