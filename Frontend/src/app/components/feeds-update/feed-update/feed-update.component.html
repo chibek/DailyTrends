@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="register-feed">
+      <!-- form card register -->
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Edit Feed: {{ feedData?.title }}</h3>
+        </div>
+
+       
+
+        <div class="card-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <img src = "assets/img/{{ feedData?.image }}">
+            <div class="form-group">
+                <label for="inputImage">Image</label>
+                <input type="file"
+                       class="form-control"
+                       formControlName="image"
+                       (change)="handleFileInput($event.target.files)">
+                <div class="invalid-validation" *ngIf="submitted && myForm.image.errors?.required">
+                        image is required.
+                </div>
+            </div>
+            
+
+            <div class="form-group">
+              <label for="inputTitle">Title</label>
+              <input class="form-control" type="text" formControlName="title">
+              <div class="invalid-validation" *ngIf="submitted && myForm.title.errors?.required">
+                title is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputBody">Body</label>
+              <input class="form-control" type="text" formControlName="body">
+              <!-- error -->
+              <div class="invalid-validation" *ngIf="submitted && myForm.body.errors?.required">
+                body is required.
+              </div>
+            </div>
+ 
+            <div class="form-group">
+                <label for="inputSource">Source</label>
+                <input class="form-control" type="text" formControlName="source">
+                <!-- error -->
+                <div class="invalid-validation" *ngIf="submitted && myForm.source.errors?.required">
+                    source is required.
+                </div>
+              </div>
+ 
+              <div class="form-group">
+                <label for="inputPublisher">Publisher</label>
+                <input class="form-control" type="text" formControlName="publisher">
+                <!-- error -->
+                <div class="invalid-validation" *ngIf="submitted && myForm.publisher.errors?.required">
+                    publisher is required.
+                </div>
+              </div>
+ 
+            <div class="form-group">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+              <button type="button" class="btn btn-danger btn-lg  btn-block" (click)="removeFeed()">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div><!-- form  -->
+    </div>
+  </div>
+ 

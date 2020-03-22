@@ -17,7 +17,12 @@
             <p>{{ feedInfo?.body }}</p>
             </li>
             <li class="list-group-item">
-            <a>{{ feedInfo?.source  }}</a>
+            <a>{{ feedInfo?.source }}</a>
+            </li>
+            <li class="list-group-item">
+                <span class="edit" [routerLink]="['/edit-feed/', feedInfo._id]">
+                    <button type="button" class="btn btn-success btn-sm">Edit</button>
+                </span>
             </li>
             </ul>
         </div>

@@ -28,7 +28,36 @@ export class FeedService {
       catchError(this.errorMgmt)
     )
   }
+  
+  // Update Feed
+  updateFeed(id, data): Observable<any> {
+    let url = `${this.baseUri}/update/${id}`;
+    return this.http.put(url, data, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
 
+  // Delete Feed
+  deleteFeed(id): Observable<any> {
+    let url = `${this.baseUri}/delete/${id}`;
+    return this.http.delete(url, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+
+
+
+/*
+
+  // Create
+  createFeed(data): Observable<any> {
+    let url = `${this.baseUri}/create`;
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+*/
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 // Components
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FeedsComponent } from './components/feeds/feeds.component';
+import { FeedsComponent } from './components/feeds-list/feeds-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { FeedUpdateComponent } from './components/feeds-update/feed-update/feed-update.component';
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +28,9 @@ const routes: Routes = [
   {
     path: 'Home',
     component: HomeComponent
+  },
+  {
+    path: 'edit-feed/:id', component: FeedUpdateComponent,
   }
 ];
 

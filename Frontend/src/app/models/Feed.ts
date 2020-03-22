@@ -1,4 +1,4 @@
-export class Employee {
+export class Feed {
     title: string;
     body: string;
     image: string;

@@ -4,8 +4,8 @@ import { FeedService } from '../../services/feed.service';
 
 @Component({
   selector: 'app-feeds',
-  templateUrl: './feeds.component.html',
-  styleUrls: ['./feeds.component.scss']
+  templateUrl: './feeds-list.component.html',
+  styleUrls: ['./feeds-list.component.scss']
 })
 export class FeedsComponent implements OnInit {
   Feed : any = [];
@@ -20,7 +20,6 @@ export class FeedsComponent implements OnInit {
 
   readFeed(){
     this.feedService.getFeeds().subscribe((data) => {
-      console.log("llega"+data[0].title)
      this.Feed = data;
     })    
   }
