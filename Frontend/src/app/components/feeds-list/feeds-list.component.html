@@ -11,7 +11,7 @@
             <span class="float-right">{{numFeed+1}}/{{Feed.length}}</span>
             </li>
             <li class="list-group-item">
-            <img  src="assets/img/{{ feedInfo.image }}"  (error)="setDefaultPic(feedInfo)"  class="img-fluid mb-1">
+            <img  src="assets/img/{{ feedInfo.image }}"  (error)="setDefaultPic(feedInfo)"  class="img-fluid mb-1"  style="display: block">
 
             <strong>{{ feedInfo?.publisher }}</strong>
             <p>{{ feedInfo?.body }}</p>

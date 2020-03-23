@@ -13,10 +13,8 @@
             <img src = "assets/img/{{ feedData?.image }}">
             <div class="form-group">
                 <label for="inputImage">Image</label>
-                <input type="file"
-                       class="form-control"
-                       formControlName="image"
-                       (change)="handleFileInput($event.target.files)">
+                     <input type="file" name="image" (change)="selectImage($event)" />
+
                 <div class="invalid-validation" *ngIf="submitted && myForm.image.errors?.required">
                         image is required.
                 </div>

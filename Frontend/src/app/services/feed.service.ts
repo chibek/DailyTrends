@@ -30,7 +30,8 @@ export class FeedService {
   }
   
   // Update Feed
-  updateFeed(id, data): Observable<any> {
+  updateFeed(id, data, image): Observable<any> {
+    data.image = image;
     let url = `${this.baseUri}/update/${id}`;
     return this.http.put(url, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
@@ -45,6 +46,12 @@ export class FeedService {
     )
   }
 
+  uploadImage(formData){
+    this.http.post<any>(`${this.baseUri}`+"/file", formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
 
 
 /*

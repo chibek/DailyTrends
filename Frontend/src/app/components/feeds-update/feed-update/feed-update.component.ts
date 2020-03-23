@@ -15,6 +15,8 @@ export class FeedUpdateComponent implements OnInit {
   editForm: FormGroup;
   id: String;
   reader = new FileReader();
+  imageUpload: Boolean = false;
+  formData = new FormData();
 
   constructor(
     private feedService: FeedService,
@@ -40,9 +42,9 @@ export class FeedUpdateComponent implements OnInit {
   }
 
   getFeed(id) {
-    let baseUrl: string = "assets/img/";
     this.feedService.getFeed(id).subscribe(data => {
       this.feedData = data;
+      console.log( data['source'])
       this.editForm.setValue({
         title: data['title'],
         body: data['body'],
@@ -68,8 +70,12 @@ export class FeedUpdateComponent implements OnInit {
       return false;
     } else {
       if (window.confirm('Are you sure u want update the Feed?')) {
-        this.feedService.updateFeed(this.id, this.editForm.value)
+        this.feedService.updateFeed(this.id, this.editForm.value, this.feedData.image)
           .subscribe(res => {
+            if(this.imageUpload){
+              this.feedService.uploadImage(this.formData);
+            }
+            
             this.router.navigateByUrl('/Feeds');
             console.log('Content updated successfully!')
           }, (error) => {
@@ -79,12 +85,13 @@ export class FeedUpdateComponent implements OnInit {
     }
   }
 
-  handleFileInput(fileInput){
-  
-    let file = fileInput[0];
-    console.log(file)
-
-    this.feedData.image = file.name
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.formData.append('file', file);
+      this.feedData.image = file.name;
+    }
   }
 
 }
+
