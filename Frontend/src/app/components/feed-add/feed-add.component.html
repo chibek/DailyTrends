@@ -3,17 +3,15 @@
       <!-- form card register -->
       <div class="card card-outline-secondary">
         <div class="card-header">
-          <h3 class="mb-0">Edit Feed: {{ feedData?.title }}</h3>
+          <h3 class="mb-0">Create Feed</h3>
         </div>
-
-       
 
         <div class="card-body">
           <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-            <img src = "assets/img/{{ feedData?.image }}">
+            <img src = "assets/img/{{ image }}" class="img-feed">
             <div class="form-group">
                 <label for="inputImage">Image</label>
-                     <input type="file" name="image" (change)="selectImage($event)" />
+                     <input type="file" name="image" formControlName="image" class="form-control" (change)="selectImage($event)" />
 
                 <div class="invalid-validation" *ngIf="submitted && myForm.image.errors?.required">
                         image is required.
@@ -56,8 +54,7 @@
               </div>
  
             <div class="form-group">
-              <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
-              <button type="button" class="btn btn-danger btn-lg  btn-block" (click)="removeFeed()">Delete</button>
+              <button class="btn btn-success btn-lg btn-block" type="submit">Create</button>
             </div>
           </form>
         </div>

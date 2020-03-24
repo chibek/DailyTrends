@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/Feeds" routerLinkActive="active">Feeds</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/addFeed" routerLinkActive="active">Add Feed</a>
+          </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <ng-container *ngIf="!authService.loggedIn(); else loggedIn">

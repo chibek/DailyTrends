@@ -11,13 +11,14 @@
             <span class="float-right">{{numFeed+1}}/{{Feed.length}}</span>
             </li>
             <li class="list-group-item">
-            <img  src="assets/img/{{ feedInfo.image }}"  (error)="setDefaultPic(feedInfo)"  class="img-fluid mb-1"  style="display: block">
+            <img  src="assets/img/{{ feedInfo.image }}"  (error)="setDefaultPic(feedInfo)"  class="img-fluid mb-1 img-feed" >
 
             <strong>{{ feedInfo?.publisher }}</strong>
             <p>{{ feedInfo?.body }}</p>
             </li>
             <li class="list-group-item">
             <a>{{ feedInfo?.source }}</a>
+            <div>{{feedInfo._id}}</div>
             </li>
             <li class="list-group-item">
                 <span class="edit" [routerLink]="['/edit-feed/', feedInfo._id]">

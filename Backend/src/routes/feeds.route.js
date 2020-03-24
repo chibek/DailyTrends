@@ -56,15 +56,14 @@ feedRoute.route('/update/:id').put((req, res, next) => {
 
 // Delete Feed
 feedRoute.route('/delete/:id').delete((req, res, next) => {
-  Feed.findOneAndRemove(req.params.id, (error, data) => {
+  Feed.findOneAndRemove({'_id' : req.params.id}, (error, data) => {
     if (error) {
       return next(error);
     } else {
       res.status(200).json({
         msg: data
       })
-    }
-  })
+    }})
 })
 
 module.exports = feedRoute;

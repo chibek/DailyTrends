@@ -30,8 +30,7 @@ export class FeedService {
   }
   
   // Update Feed
-  updateFeed(id, data, image): Observable<any> {
-    data.image = image;
+  updateFeed(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
     return this.http.put(url, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
@@ -52,10 +51,6 @@ export class FeedService {
       (err) => console.log(err)
     );
   }
-
-
-/*
-
   // Create
   createFeed(data): Observable<any> {
     let url = `${this.baseUri}/create`;
@@ -64,7 +59,7 @@ export class FeedService {
         catchError(this.errorMgmt)
       )
   }
-*/
+
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
