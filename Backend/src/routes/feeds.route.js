@@ -37,7 +37,17 @@ feedRoute.route('/read/:id').get((req, res) => {
     }
   })
 })
-
+//check source exist
+feedRoute.route('/article/:source').get((req, res) => {
+  console.log(req)
+  Feed.find({ "source":req.params.source}, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+})
 
 // Update Feed
 feedRoute.route('/update/:id').put((req, res, next) => {

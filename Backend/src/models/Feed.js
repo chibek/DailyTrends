@@ -6,20 +6,22 @@ const feedSchema = new Schema({
     required: true,
   },
   body: {
-    type: String,
-    required: true,
+    type: String
   },
   image: {
     type: String,
-    required: true,
   },
   source : {
     type: String,
     required: true,
+    unique: true
   },
   publisher : {
     type: String,
     required: true,
+  },
+  origen :{
+    type: String
   }
 }, { timestamps: true });
 
