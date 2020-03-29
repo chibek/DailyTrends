@@ -21,7 +21,8 @@ const feedSchema = new Schema({
     required: true,
   },
   origen :{
-    type: String
+    type: String,
+    default : "custom"
   }
 }, { timestamps: true });
 

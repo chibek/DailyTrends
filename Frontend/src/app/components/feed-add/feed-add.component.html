@@ -8,7 +8,6 @@
 
         <div class="card-body">
           <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-            <img src = "assets/img/{{ image }}" class="img-feed">
             <div class="form-group">
                 <label for="inputImage">Image</label>
                      <input type="file" name="image" formControlName="image" class="form-control" (change)="selectImage($event)" />

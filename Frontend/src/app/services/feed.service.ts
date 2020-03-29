@@ -18,6 +18,15 @@ export class FeedService {
     return this.http.get(`${this.baseUri}`);
   }
 
+  getFeedsElMundoToday() {
+    return this.http.get(`${this.baseUri}/mundotoday`);
+  }
+  getFeedsElPaisToday() {
+    return this.http.get(`${this.baseUri}/paistoday`);
+  }
+  getFeedsCustom() {
+    return this.http.get(`${this.baseUri}/customFeeds`);
+  }
   // Get Feed
   getFeed(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
@@ -28,7 +37,8 @@ export class FeedService {
       catchError(this.errorMgmt)
     )
   }
-  
+
+
   // Update Feed
   updateFeed(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;

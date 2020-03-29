@@ -10,10 +10,10 @@
           <li class="nav-item active">
             <a class="nav-link" routerLink="/Home" routerLinkActive="active">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="authService.loggedIn();">
             <a class="nav-link" routerLink="/Feeds" routerLinkActive="active">Feeds</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="authService.loggedIn();">
             <a class="nav-link" routerLink="/addFeed" routerLinkActive="active">Add Feed</a>
           </li>
         </ul>

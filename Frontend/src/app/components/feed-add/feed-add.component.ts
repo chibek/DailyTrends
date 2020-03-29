@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Feed } from './../../models/Feed';
 import { ActivatedRoute, Router } from "@angular/router";
 import {  RxwebValidators  } from "@rxweb/reactive-form-validators";
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-feed-add',
@@ -17,14 +18,20 @@ export class FeedAddComponent implements OnInit {
   reader = new FileReader();
   imageUpload: Boolean = false;
   formData = new FormData();
-
+  baseUri:string = 'http://localhost:3000/';
   constructor(
     private feedService: FeedService,
     public fb: FormBuilder,
     private actRoute: ActivatedRoute,
-    private router: Router
-    
-    ) { this.mainForm()}
+    private router: Router,
+    private authService:AuthService
+
+    ) { 
+      if (!authService.loggedIn()) {
+        this.router.navigateByUrl('/signin')
+    }else{
+      this.mainForm()
+    }}
 
   ngOnInit(): void {
   
@@ -51,7 +58,7 @@ export class FeedAddComponent implements OnInit {
       if (window.confirm('Are you sure u want add the Feed?')) {
         if(this.imageUpload){
           this.feedService.uploadImage(this.formData);
-          this.editForm.controls['image'].setValue(this.image);
+          this.editForm.controls['image'].setValue(`${this.baseUri}`+this.image);
         }
         this.feedService.createFeed(this.editForm.value)
           .subscribe(res => {
@@ -68,6 +75,7 @@ export class FeedAddComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.formData.append('file', file);
+      console.log(file)
       this.image = file.name;
       this.imageUpload  =true
     }
