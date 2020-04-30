@@ -27,7 +27,7 @@
     "bootstrap": "^4.4.1",
     "date-fns": "^2.9.0",
     "flatpickr": "^4.6.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.5.1",
     "ng-bootstrap": "^1.6.3",
     "rxjs": "~6.5.4",
